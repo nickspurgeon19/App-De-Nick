@@ -25,6 +25,12 @@ jobs:
       - name: Install NPM packages
         run: npm i
 
+      - name: Diagnose Jest ESLint plugin
+        run: |
+          node --version
+          npm ls eslint eslint-config-react-app eslint-plugin-jest
+          node -e "const p = require('eslint-plugin-jest'); console.log('Jest environments:', Object.keys(p.environments || {}))"
+      
       - name: Build project
         run: npm run build
 
